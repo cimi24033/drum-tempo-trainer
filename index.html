@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drum Tempo Trainer</title>
+  <link rel="shortcut icon" href="#">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 0 20px;
+      line-height: 1.6;
+    }
+    .card {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    input[type="text"], input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0 16px 0;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+    .status {
+      margin-top: 10px;
+      font-weight: bold;
+      min-height: 24px;
+    }
+    .param-group {
+      display: flex;
+      gap: 16px;
+    }
+    .param-group div {
+      flex: 1;
+    }
+    .volume-group {
+      margin-top: 15px;
+      padding: 15px;
+      background-color: #f8f9fa;
+      border-radius: 6px;
+    }
+    .slider-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .slider-row label {
+      width: 150px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    .slider-row input[type="range"] {
+      flex: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Drum Tempo Trainer</h1>
+
+  <!-- 1. 音源読み込みセクション -->
+  <div class="card">
+    <h2>1. 音源の読み込み</h2>
+    
+    <label for="youtubeUrl">YouTube URL:</label>
+    <input type="text" id="youtubeUrl" placeholder="https://www.youtube.com/watch?v=..." />
+    <button id="loadYoutubeBtn">YouTube読み込み & 解析</button>
+
+    <hr style="margin: 20px 0;">
+
+    <label for="localFileInput">またはローカル音声ファイル (MP3/WAV/MP4):</label><br>
+    <input type="file" id="localFileInput" accept="audio/*,video/quicktime" style="margin-top: 8px;" />
+
+    <div id="statusText" class="status"></div>
+  </div>
+
+  <!-- 2. コントロールセクション -->
+  <div class="card">
+    <h2>2. コントロール & 音量・位置調整</h2>
+    
+    <div class="param-group">
+      <div>
+        <label for="bpmInput">BPM:</label>
+        <input type="number" id="bpmInput" step="0.1" value="120" />
+      </div>
+      <div>
+        <label for="offsetInput">オフセット (秒):</label>
+        <input type="number" id="offsetInput" step="0.001" value="0.000" />
+      </div>
+    </div>
+
+    <!-- 各種スライダーグループ -->
+    <div class="volume-group">
+      <div class="slider-row">
+        <label for="musicVol">音源 (YouTube) 音量:</label>
+        <input type="range" id="musicVol" min="0" max="1" step="0.01" value="0.8">
+      </div>
+      <div class="slider-row">
+        <label for="clickVol">クリック音 音量:</label>
+        <input type="range" id="clickVol" min="0" max="1" step="0.01" value="0.8">
+      </div>
+      <div class="slider-row" style="margin-top: 15px;">
+        <label for="seekSlider">再生位置 (秒):</label>
+        <input type="range" id="seekSlider" min="0" max="100" step="0.1" value="0" disabled>
+        <span id="currentTimeText" style="font-size: 12px; font-family: monospace;">0.0s</span>
+      </div>
+    </div>
+
+    <div style="margin-top: 20px;">
+      <button id="playBtn" disabled>再生 / 一時停止</button>
+      <button id="stopBtn" style="background-color: #6c757d;">停止</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

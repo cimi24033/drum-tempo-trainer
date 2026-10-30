@@ -1,0 +1,122 @@
+/* 全体の基本設定 */
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f4f7f6;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+/* プレイヤーカードのデザイン */
+.player-card {
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.player-card h3 {
+  margin-top: 0;
+  font-size: 1.1rem;
+  color: #34495e;
+  word-break: break-all;
+}
+
+/* コントロールパネルエリア */
+.controls, .timeline-setup {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #2c3e50;
+  border-bottom: 2px solid #eef2f5;
+  padding-bottom: 5px;
+}
+
+/* 入力フォームとボタン */
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+input[type="file"] {
+  padding: 5px 0;
+}
+
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 9px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+/* 再生・停止ボタンの個別スタイル */
+#playBtn {
+  background-color: #2ecc71;
+  font-size: 1rem;
+  padding: 12px 24px;
+  margin-right: 10px;
+}
+
+#playBtn:hover {
+  background-color: #27ae60;
+}
+
+#pauseBtn {
+  background-color: #e74c3c;
+  font-size: 1rem;
+  padding: 12px 24px;
+}
+
+#pauseBtn:hover {
+  background-color: #c0392b;
+}
+
+/* スライダー関係 */
+input[type="range"] {
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #eee;
+  margin: 20px 0;
+}
+
+/* タイムライン用テキストエリア */
+textarea {
+  width: 100%;
+  font-family: monospace;
+  line-height: 1.4;
+}
